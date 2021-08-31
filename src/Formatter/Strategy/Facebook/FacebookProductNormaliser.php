@@ -61,11 +61,8 @@ class FacebookProductNormaliser implements ProductNormaliserInterface
             'link' => $product->getLink()->getValue(),
             'image_link' => $product->getImageLink()->getValue(),
             'brand' => $product->getBrand(),
+            'additional_image_link' => implode(',', $product->getAdditionalImageLink()),
         ];
-
-        if (!empty($product->getAdditionalImageLink())) {
-            $normalisedProduct['additional_image_link'] = implode(',', $product->getAdditionalImageLink());
-        }
 
         return $normalisedProduct;
     }
