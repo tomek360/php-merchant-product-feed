@@ -88,6 +88,15 @@ class Product
     private $imageLink;
 
     /**
+     * URL for the additional image of your item
+     *
+     * @link https://www.facebook.com/business/help/686259348512056 Facebook recommendations
+     *
+     * @var Url[]
+     */
+    private $additionalImageLink;
+
+    /**
      * Brand name, unique manufacturer part number (MPN), or Global Trade Item Number (GTIN) of the item.
      *
      * @var string
@@ -139,6 +148,7 @@ class Product
         Price $price,
         Url $link,
         Url $imageLink,
+        array $additionalImageLink,
         string $brand
     ) {
         $this->id = $id;
@@ -149,6 +159,7 @@ class Product
         $this->price = $price;
         $this->link = $link;
         $this->imageLink = $imageLink;
+        $this->additionalImageLink = $additionalImageLink;
         $this->brand = $brand;
     }
 
@@ -214,6 +225,11 @@ class Product
     public function getImageLink(): Url
     {
         return $this->imageLink;
+    }
+
+    public function getAdditionalImageLink(): array
+    {
+        return $this->additionalImageLink;
     }
 
     /**
