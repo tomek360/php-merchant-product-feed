@@ -60,9 +60,12 @@ class FacebookProductNormaliser implements ProductNormaliserInterface
             'price' => $product->getPrice()->getAmount() . ' ' . $product->getPrice()->getIso4210Currency(),
             'link' => $product->getLink()->getValue(),
             'image_link' => $product->getImageLink()->getValue(),
-            'additional_image_link' => implode(',', $product->getAdditionalImageLink()),
             'brand' => $product->getBrand(),
         ];
+
+        if (!empty($product->getAdditionalImageLink())) {
+            $normalisedProduct['additional_image_link'] = implode(',', $product->getAdditionalImageLink());
+        }
 
         return $normalisedProduct;
     }
@@ -71,6 +74,5 @@ class FacebookProductNormaliser implements ProductNormaliserInterface
     {
         return strtolower($marketingPlatform) === 'facebook';
     }
-
 
 }
