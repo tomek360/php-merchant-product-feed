@@ -20,4 +20,9 @@ abstract class AbstractScalarField extends AbstractField
     {
         return $this->value;
     }
+
+    public function __toString()
+    {
+        return $this->value;
+    }
 }
